@@ -16,18 +16,14 @@
             <section>
                 <div class="container">
                     <h1>{{ title }}</h1>
-                    <input type="text">
+                    <input type="text" v-model="newTodo" @keyup.enter=storeToDo()>
                 </div>
-
             </section>
 
             <section>
                 <div class="container">
                     <ul>
-                        <li>c</li>
-                        <li>c</li>
-                        <li>c</li>
-                        <li>c</li>
+                        <li v-for="(todo, i) in todos" :key="i">{{todo.text}}</li>
                     </ul>
                 </div>
             </section>
