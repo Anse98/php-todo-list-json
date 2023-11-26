@@ -14,8 +14,20 @@ createApp({
                 this.todos = res.data;
             });
         },
+
         storeToDo() {
-            console.log(this.newTodo);
+
+            const data = {
+                todo: this.newTodo,
+            }
+
+            axios.post('store.php', data, {
+                headers: { 'Content-type': 'multipart/form-data' }
+            }).then((res) => {
+                this.todos = res.data;
+            })
+
+            this.newTodo = '';
         }
     },
     created() {
