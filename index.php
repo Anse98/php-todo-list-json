@@ -23,8 +23,8 @@
             <section>
                 <div class="container body">
                     <ul>
-                        <li v-for="(todo, i) in todos" :key="i" :class="{done : todo.done}" @click="toggleDone(i)">
-                            <span class="todo">{{todo.text}}</span>
+                        <li v-for="(todo, i) in todos" :key="i" :class="{done : todo.done}">
+                            <span class="todo" @click="toggleDone(i)">{{todo.text}}</span>
                             <span class="delete" @click="deleteTodo(i)">Elimina</span>
                         </li>
                     </ul>
