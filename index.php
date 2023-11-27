@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./style.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/f1f0c66429.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -24,8 +25,11 @@
                 <div class="container body">
                     <ul>
                         <li v-for="(todo, i) in todos" :key="i" :class="{done : todo.done}">
-                            <span class="todo" @click="toggleDone(i)">{{todo.text}}</span>
-                            <span class="delete" @click="deleteTodo(i)">Elimina</span>
+                            <span class="todo">{{todo.text}}</span>
+                            <div class="icons">
+                                <span class="check" @click="toggleDone(i)"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="delete" @click="deleteTodo(i)"><i class="fa-solid fa-trash"></i></span>
+                            </div>
                         </li>
                     </ul>
                 </div>

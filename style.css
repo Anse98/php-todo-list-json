@@ -24,12 +24,14 @@
 }
 
 .container.head .input-todo {
-    padding: 6px 4px;
+    padding: 8px 4px;
     border-color: violet;
 }
 
 .container.body {
-    padding: 12px;
+    padding: 20px;
+    border: solid 1px lightgray;
+    box-shadow: 3px 3px 5px blueviolet;
 }
 
 .done .todo {
@@ -41,8 +43,24 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    border-bottom: solid 1px lightgray;
+    padding-bottom: 4px;
 }
 
+.container ul li .check,
 .container ul li .delete {
     cursor: pointer;
+}
+
+.container .icons {
+    display: flex;
+    gap: 10px;
+}
+
+.container .icons .delete {
+    color: tomato;
+}
+
+.container .icons .check {
+    color: green;
 }
