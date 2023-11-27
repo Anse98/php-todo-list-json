@@ -6,7 +6,7 @@ $json = file_get_contents('./todos.json');
 
 $todos = json_decode($json, true);
 
-unset($todos[$id]);
+array_splice($todos, $id, 1);
 
 $json = json_encode($todos);
 

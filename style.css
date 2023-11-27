@@ -28,6 +28,10 @@
     border-color: violet;
 }
 
+.container.head .input-todo:focus {
+    outline: blueviolet;
+}
+
 .container.body {
     padding: 20px;
     border: solid 1px lightgray;
@@ -45,6 +49,10 @@
     margin-bottom: 10px;
     border-bottom: solid 1px lightgray;
     padding-bottom: 4px;
+}
+
+.container ul li:last-child {
+    border-bottom: none;
 }
 
 .container ul li .check,

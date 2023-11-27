@@ -16,7 +16,6 @@ createApp({
         },
 
         storeToDo() {
-
             if (this.newTodo === '') {
                 return
             } else {
@@ -27,17 +26,16 @@ createApp({
                 axios.post('store.php', data, {
                     headers: { 'Content-type': 'multipart/form-data' }
                 }).then((res) => {
-                    this.todos = res.data;
+                    console.log(res.data)
+                    this.todos = res.data.todos;
                 })
 
                 this.newTodo = '';
 
             }
-
         },
 
         deleteTodo(index) {
-
             const todoIndex = {
                 id: index,
             }
@@ -47,10 +45,10 @@ createApp({
             }).then(res => {
                 this.todos = res.data;
             })
-
         },
 
         toggleDone(index) {
+            console.log(index)
             const todoIndex = {
                 index: index
             }

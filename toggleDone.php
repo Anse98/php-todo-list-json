@@ -1,16 +1,12 @@
 <?php
 
-$index = $_POST['index'] ?? null;
+$index = $_POST['index'] ?? -1;
 
 $json = file_get_contents('./todos.json');
 
 $todos = json_decode($json, true);
 
-if ($todos[$index]['done'] === true) {
-    $todos[$index]['done'] = false;
-} else {
-    $todos[$index]['done'] = true;
-};
+$todos[$index]['done'] = !$todos[$index]['done'];
 
 $json = json_encode($todos);
 

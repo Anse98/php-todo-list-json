@@ -2,21 +2,33 @@
 
 $new_todo = $_POST['todo'] ?? '';
 
-$new_todo_arr = [
-    'text' => $new_todo,
-    'done' => false,
+$response = [
+    'success' => true
 ];
 
-$json = file_get_contents('./todos.json');
+if ($new_todo) {
 
-$todos = json_decode($json, true);
+    $new_todo_arr = [
+        'text' => $new_todo,
+        'done' => false,
+    ];
 
-$todos[] = $new_todo_arr;
+    $json = file_get_contents('./todos.json');
 
-$json = json_encode($todos);
+    $todos = json_decode($json, true);
 
-file_put_contents('./todos.json', $json);
+    $todos[] = $new_todo_arr;
+
+    $response['todos'] = $todos;
+
+    $json = json_encode($todos);
+
+    file_put_contents('./todos.json', $json);
+} else {
+    $response['success'] = false;
+    $response['message'] = "Valore task non valido";
+}
+
 
 header('Content-Type: application/json');
-
-echo $json;
+echo json_encode($response);
