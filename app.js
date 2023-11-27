@@ -17,17 +17,49 @@ createApp({
 
         storeToDo() {
 
-            const data = {
-                todo: this.newTodo,
+            if (this.newTodo === '') {
+                return
+            } else {
+                const data = {
+                    todo: this.newTodo,
+                }
+
+                axios.post('store.php', data, {
+                    headers: { 'Content-type': 'multipart/form-data' }
+                }).then((res) => {
+                    this.todos = res.data;
+                })
+
+                this.newTodo = '';
+
             }
 
-            axios.post('store.php', data, {
+        },
+
+        deleteTodo(index) {
+
+            const todoIndex = {
+                id: index,
+            }
+
+            axios.post('./deleteTodo.php', todoIndex, {
                 headers: { 'Content-type': 'multipart/form-data' }
-            }).then((res) => {
+            }).then(res => {
                 this.todos = res.data;
             })
 
-            this.newTodo = '';
+        },
+
+        toggleDone(index) {
+            const todoIndex = {
+                index: index
+            }
+
+            axios.post('./toggleDone.php', todoIndex, {
+                headers: { 'Content-type': 'multipart/form-data' }
+            }).then(res => {
+                this.todos = res.data;
+            })
         }
     },
     created() {

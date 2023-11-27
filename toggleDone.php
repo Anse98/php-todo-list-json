@@ -1,17 +1,16 @@
 <?php
 
-$new_todo = $_POST['todo'] ?? '';
-
-$new_todo_arr = [
-    'text' => $new_todo,
-    'done' => false,
-];
+$index = $_POST['index'] ?? null;
 
 $json = file_get_contents('./todos.json');
 
 $todos = json_decode($json, true);
 
-$todos[] = $new_todo_arr;
+if ($todos[$index]['done'] === true) {
+    $todos[$index]['done'] = false;
+} else {
+    $todos[$index]['done'] = true;
+};
 
 $json = json_encode($todos);
 

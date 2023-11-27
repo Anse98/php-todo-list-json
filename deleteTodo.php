@@ -1,17 +1,12 @@
 <?php
 
-$new_todo = $_POST['todo'] ?? '';
-
-$new_todo_arr = [
-    'text' => $new_todo,
-    'done' => false,
-];
+$id = $_POST['id'] ?? null;
 
 $json = file_get_contents('./todos.json');
 
 $todos = json_decode($json, true);
 
-$todos[] = $new_todo_arr;
+unset($todos[$id]);
 
 $json = json_encode($todos);
 

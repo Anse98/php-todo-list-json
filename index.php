@@ -14,16 +14,19 @@
     <div id="app">
         <main>
             <section>
-                <div class="container">
-                    <h1>{{ title }}</h1>
-                    <input type="text" v-model="newTodo" @keyup.enter=storeToDo()>
+                <div class="container head">
+                    <h1 class="title">{{ title }}</h1>
+                    <input class="input-todo" type="text" v-model.trim="newTodo" @keyup.enter=storeToDo() placeholder="Nuova To do..">
                 </div>
             </section>
 
             <section>
-                <div class="container">
+                <div class="container body">
                     <ul>
-                        <li v-for="(todo, i) in todos" :key="i">{{todo.text}}</li>
+                        <li v-for="(todo, i) in todos" :key="i" :class="{done : todo.done}" @click="toggleDone(i)">
+                            <span class="todo">{{todo.text}}</span>
+                            <span class="delete" @click="deleteTodo(i)">Elimina</span>
+                        </li>
                     </ul>
                 </div>
             </section>

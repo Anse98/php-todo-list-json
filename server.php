@@ -1,24 +1,5 @@
 <?php
 
-// $todos = [
-//     [
-//         'text' => 'PHP',
-//         'done' => false
-//     ],
-//     [
-//         'text' => 'JavaScript',
-//         'done' => false
-//     ],
-//     [
-//         'text' => 'HTML',
-//         'done' => true
-//     ],
-//     [
-//         'text' => 'CSS',
-//         'done' => true
-//     ],
-// ];
-
 $json = file_get_contents('./todos.json');
 
 $todos = json_decode($json, true);
